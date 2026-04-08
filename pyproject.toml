@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "travel-survival-env"
+version = "0.1.0"
+description = "A-to-B Travel Survival environment for OpenEnv Hackathon"
+authors = [{ name = "Chandan Singh Rajput" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0.0",
+    "openai",
+    "openenv-core",
+    "fastapi",
+    "uvicorn",
+]
+
+[project.scripts]
+server = "server.app:app"
+
+[tool.setuptools]
+packages = ["server"]

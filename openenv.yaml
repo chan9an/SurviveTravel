@@ -1,0 +1,16 @@
+version: "1.0"
+name: "A-to-B Travel Survival"
+description: "Navigate from a starting city to a destination while managing budget, weather disruptions, and transit failures."
+
+environment:
+  entrypoint: "travel_env:TravelEnv"
+  action_model: "travel_env:TravelAction"
+  observation_model: "travel_env:TravelObservation"
+
+tasks:
+  - id: "easy-clear-skies"
+    description: "Navigate a straightforward route with minor delays."
+  - id: "medium-strike"
+    description: "Reroute around a major train strike with a limited budget."
+  - id: "hard-storm"
+    description: "Survive a multi-modal transit collapse caused by severe weather."
