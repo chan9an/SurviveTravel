@@ -155,7 +155,7 @@ class TravelEnv:
         reached = obs.current_city == obs.destination_city
 
         if self.task_id == "easy-clear-skies":
-            return 1.0 if reached else 0.0
+            score = 0.95 if reached else 0.05
 
         elif self.task_id == "medium-strike":
             score = 0.0
@@ -165,7 +165,7 @@ class TravelEnv:
                 score -= 0.5
             if obs.remaining_budget > 200:
                 score += 0.2
-            return min(1.0, max(0.0, score))
+            score = min(0.95, max(0.05, score))
 
         elif self.task_id == "hard-storm":
             score = 0.0
@@ -175,9 +175,12 @@ class TravelEnv:
                 score += 0.25
             if obs.current_time_hours < 48:
                 score += 0.25
-            return min(1.0, max(0.0, score))
+            score = min(0.95, max(0.05, score))
 
-        return 0.0
+        else:
+            score = 0.05
+
+        return score
 
     async def state(self) -> TravelObservation:
         return self.state_data
